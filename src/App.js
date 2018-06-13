@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
 const { Header, Sider, Content, Footer } = Layout
+const { SubMenu } = Menu
 
 
 class App extends Component {
@@ -23,20 +24,28 @@ class App extends Component {
                     collapsible
                     collapsed={this.state.collapsed}
                 >
-                    <div className="logo" />
+                    <div className="logo">Logo</div>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1">
-                            <Icon type="user" />
-                            <span>nav 1</span>
+                            <Icon type="star-o" />
+                            <span>ภาพรวม</span>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Icon type="video-camera" />
-                            <span>nav 2</span>
+                            <Icon type="solution" />
+                            <span>รายการสั่งซื้อ</span>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Icon type="upload" />
-                            <span>nav 3</span>
+                            <Icon type="skin" />
+                            <span>สินค้า</span>
                         </Menu.Item>
+                        <Menu.Item key="4">
+                            <Icon type="team" />
+                            <span>ลูกค้า</span>
+                        </Menu.Item>
+                        <SubMenu key="5" title={<span><Icon type="setting" />ตั้งค่า</span>}>
+                            <Menu.Item key="sub5-1">เกี่ยวกับร้านค้า</Menu.Item>
+                            <Menu.Item key="sub5-2">การจัดส่ง</Menu.Item>
+                        </SubMenu>
                     </Menu>
                 </Sider>
                 <Layout>
