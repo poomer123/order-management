@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Icon, Table } from 'antd'
 const { Header, Sider, Content, Footer } = Layout
 const { SubMenu } = Menu
 
@@ -17,8 +17,23 @@ class App extends Component {
     }
 
     render() {
+
+        const columns = [
+            { title: 'เลขที่สั่งซื้อ', dataIndex: 'key', key: 'เลขที่สั่งซื้อ' },
+            { title: 'ชื่อลูกค้า', dataIndex: 'name', key: 'name' },
+            { title: 'ที่อยู่จัดส่ง', dataIndex: 'address', key: 'ที่อยู่จัดส่ง' },
+            { title: 'สถานะ', dataIndex: 'status', key: 'สถานะ' },
+            { title: 'ดำเนินการ', dataIndex: '', key: 'x', render: () => <a href="javascript:;">ลบ</a> },
+          ]
+          
+        const data = [
+            { key: 1, name: 'คุณยิ่งใหญ่ จริงใจ', status: 'จัดส่งแล้ว', address: 'ถนนพระราม 9 แขวงบางกะปิ เขตห้วยขวาง กรุงเทพมหานคร 10310', description: 'Product' },
+            { key: 2, name: 'คุณชายกลาง หายป่วย', status: 'กำลังตรวจสอบชำระเงิน', address: 'ถนนพระราม 9 แขวงบางกะปิ เขตห้วยขวาง กรุงเทพมหานคร 10310', description: 'Product' },
+            { key: 3, name: 'คุณเหนื่อยนัก พักหน่อย', status: 'กำลังเตรียมสินค้าเพื่อจัดส่ง', address: 'ถนนพระราม 9 แขวงบางกะปิ เขตห้วยขวาง กรุงเทพมหานคร 10310', description: 'Product' },
+        ]
+          
         return (
-            <Layout id="components-layout-demo-custom-trigger">
+            <Layout id="components-layout-custom-trigger">
                 <Sider
                     trigger={null}
                     collapsible
@@ -57,7 +72,11 @@ class App extends Component {
                         />
                     </Header>
                     <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 800 }}>
-                        Content
+                        <Table
+                            columns={columns}
+                            expandedRowRender={record => <p style={{ margin: 0 }}>{record.description}</p>}
+                            dataSource={data}
+                        />
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
                         Order Management Application ©2018 Created by kickdown.in.th
