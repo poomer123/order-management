@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Icon, Table } from 'antd'
+import { Layout, Menu, Icon, Table, Button } from 'antd'
 const { Header, Sider, Content, Footer } = Layout
 const { SubMenu } = Menu
 
@@ -20,11 +20,11 @@ class App extends Component {
 
         const columns = [
             { title: 'เลขที่สั่งซื้อ', width: 100, dataIndex: 'key', key: 'เลขที่สั่งซื้อ', fixed: 'left' },
-            { title: 'ชื่อลูกค้า', width: 250, dataIndex: 'name', key: 'name', fixed: 'left' },
+            { title: 'ชื่อลูกค้า', width: 200, dataIndex: 'name', key: 'name' },
             { title: 'ที่อยู่จัดส่ง', width: 500, dataIndex: 'address', key: 'ที่อยู่จัดส่ง' },
             { title: 'สถานะ', width: 200, dataIndex: 'status', key: 'สถานะ' },
             { title: 'ดำเนินการ', width: 100, dataIndex: '', key: 'x', 
-                render: () => <div><a href="javascript:;">แก้ไข</a> <a href="javascript:;">ลบ</a></div>
+                render: () => <div><a>แก้ไข</a> <a>ลบ</a></div>
             },
           ]
 
@@ -75,6 +75,7 @@ class App extends Component {
                         />
                     </Header>
                     <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 800 }}>
+                        <Button type="primary" icon="plus">เพิ่มรายการใหม่</Button>
                         <Table
                             columns={columns}
                             expandedRowRender={record => <p style={{ margin: 0 }}>{record.description}</p>}
