@@ -19,12 +19,15 @@ class App extends Component {
     render() {
 
         const columns = [
-            { title: 'เลขที่สั่งซื้อ', dataIndex: 'key', key: 'เลขที่สั่งซื้อ' },
-            { title: 'ชื่อลูกค้า', dataIndex: 'name', key: 'name' },
-            { title: 'ที่อยู่จัดส่ง', dataIndex: 'address', key: 'ที่อยู่จัดส่ง' },
-            { title: 'สถานะ', dataIndex: 'status', key: 'สถานะ' },
-            { title: 'ดำเนินการ', dataIndex: '', key: 'x', render: () => <a href="javascript:;">ลบ</a> },
+            { title: 'เลขที่สั่งซื้อ', width: 100, dataIndex: 'key', key: 'เลขที่สั่งซื้อ', fixed: 'left' },
+            { title: 'ชื่อลูกค้า', width: 250, dataIndex: 'name', key: 'name', fixed: 'left' },
+            { title: 'ที่อยู่จัดส่ง', width: 500, dataIndex: 'address', key: 'ที่อยู่จัดส่ง' },
+            { title: 'สถานะ', width: 200, dataIndex: 'status', key: 'สถานะ' },
+            { title: 'ดำเนินการ', width: 100, dataIndex: '', key: 'x', 
+                render: () => <div><a href="javascript:;">แก้ไข</a> <a href="javascript:;">ลบ</a></div>
+            },
           ]
+
           
         const data = [
             { key: 1, name: 'คุณยิ่งใหญ่ จริงใจ', status: 'จัดส่งแล้ว', address: 'ถนนพระราม 9 แขวงบางกะปิ เขตห้วยขวาง กรุงเทพมหานคร 10310', description: 'Product' },
@@ -76,6 +79,7 @@ class App extends Component {
                             columns={columns}
                             expandedRowRender={record => <p style={{ margin: 0 }}>{record.description}</p>}
                             dataSource={data}
+                            scroll={{ x: 1200 }}
                         />
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
